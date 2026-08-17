@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sora: var(--font-sora);
+  --font-inter: var(--font-inte);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+
+
+
+
+
+/* Tailwind Styles */
+
+h1{
+  @apply text-6xl font-sora font-bold text-blue-600
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+p{
+  @apply text-sm font-inter text-gray-600
+}
+.nav-comp{
+  @apply text-blue-500 text-xl font-bold  
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.joke-box{
+  @apply w-full mx-auto max-w-xl text-center flex flex-col items-center justify-center gap-5  
+  bg-blue-100 p-10 rounded-2xl
+}
+
+.joke-para{
+  @apply font-sora text-base text-gray-600  text-justify
+}
+
+.joke-btn{
+@apply rounded-xl bg-blue-300 p-4 text-white font-semibold text-base mt-4
+cursor-pointer
 }
