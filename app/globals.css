@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+
+
 @theme {
   --font-sora: var(--font-sora);
   --font-inter: var(--font-inte);
@@ -17,9 +19,7 @@ h1{
   @apply text-6xl font-sora font-bold text-blue-600
 }
 
-p{
-  @apply text-sm font-inter text-gray-600
-}
+
 .nav-comp{
   @apply text-blue-500 text-xl font-bold  
 }
@@ -37,3 +37,13 @@ p{
 @apply rounded-xl bg-blue-300 p-4 text-white font-semibold text-base mt-4
 cursor-pointer
 }
+
+.dic-cont{
+  @apply w-full max-w-[40%] m-auto max-h-screen bg-purple-300 px-10 py-15
+  flex flex-col gap-6 rounded-xl text-gray-700 font-sora mt-10
+}
+
+.result{
+  @apply flex flex-col justify-start text-purple-700 font-sora 
+}
+

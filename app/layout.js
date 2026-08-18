@@ -1,6 +1,7 @@
 
 import { Sora, Inter } from "next/font/google";
 import "./globals.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import Nav from "@/componenets/Nav";
 
@@ -24,7 +25,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" >
-
+      
       <body className={`${sora.variable} ${inter.variable}`}>
         <Nav/>
 

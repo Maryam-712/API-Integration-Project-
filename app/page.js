@@ -8,7 +8,7 @@ const Home = () => {
       <h1 className='mt-10'>
         Welcome To API Hub
       </h1>
-      <p className='mt-5 '>
+      <p className='mt-5 text-sm font-inter text-gray-600'>
         Explore different APIs and their real-time data.
         Each Project is integrated with a unique API to bring you useful information
       </p>
