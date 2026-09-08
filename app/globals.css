@@ -1,13 +1,24 @@
 @import "tailwindcss";
 
 
-
 @theme {
   --font-sora: var(--font-sora);
   --font-inter: var(--font-inte);
 }
 
+*{
+  box-sizing: border-box;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+}
 
 
 
@@ -46,4 +57,13 @@ cursor-pointer
 .result{
   @apply flex flex-col justify-start text-purple-700 font-sora 
 }
+
+.container{
+ @apply flex justify-center items-center h-screen
+}
+
+.wrapper{
+  @apply w-full max-w-md shadow-lg p-4 m-3 rounded-xl
+}
+
 

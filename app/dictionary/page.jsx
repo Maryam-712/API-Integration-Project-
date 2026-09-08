@@ -7,24 +7,33 @@ const Dictionary = () => {
     const [result, setResult] = useState([]);
     const audioRef = useRef(null);
     const [notFound, setNotFound] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const fetchData = () => {
-        setNotFound("");
-
-        if (!searchWord.trim()) return;
-        return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
-            .then(response => {
-                if (!response.ok) throw new Error("Failed to fetch data");
-                return response.json();
-            })
-            .then(data => {
-                setResult(Array.isArray(data) ? data : []);
-            })
-            .catch(error => {
-                console.error("Error fetching data: ", error);
+    const fetchData = async () => {
+        try{
+            setLoading(true);
+            setNotFound("");
+         
+            const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`)
+            if(!response.ok){
+                throw new Error("Failed to fetch")
+            }
+                const data = await response.json();
+                setResult(data)
+            
+        }
+        catch(error){
+            console.error("Error fetching data: ", error);
+                setResult([]);
                 setNotFound("Couldn't find the word");
-            });
-    };
+                
+        }
+        finally{
+            setLoading(false);
+        }
+    }
+
+    
 
     const rawAudio = result[0]?.phonetics?.find(p => p.audio)?.audio;
     const audioUrl = rawAudio
@@ -78,14 +87,14 @@ const Dictionary = () => {
                 </button>
             </div>
             <div>
-                 {notFound && (
-    <p className="text-red-500 mt-4 text-center text-2xl">
-        {notFound}
-    </p>)}
+                {notFound && (
+                    <p className="text-red-500 mt-4 text-center text-2xl">
+                        {notFound}
+                    </p>)}
             </div>
-             
 
-            <div className='result'>
+            {loading && <div className="text-2xl text-center font-semibold"> Loading... </div>}
+            <div className='result' hidden={loading}>
                 <div className='flex justify-between'>
                     <h3 className='text-purple-800 text-2xl font-semibold'>
                         {result[0]?.word}
@@ -93,7 +102,7 @@ const Dictionary = () => {
 
                     {result[0]?.word && (
                         <button onClick={playAudio}
-                        className='cursor-pointer text-xl'>
+                            className='cursor-pointer text-xl'>
                             <i className="fa-solid fa-volume"></i>
                         </button>
                     )}
